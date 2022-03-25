@@ -1,0 +1,66 @@
+{% block content %}
+<h1>Student Enrollment</h1>
+<hr>
+<h2>Student's Classes</h2>
+<table>
+    <tr>
+        <th>Student ID</th>
+        <th>Course Name</th>
+    </tr>
+    {% for i in query_student_course %}
+    <tr>
+        <th>{{i.studentID}}</th>
+        {% for j in i.classes %}
+        <th style="border-right: 2px solid black;">{{j.courseName}}</th>
+        {% endfor %}
+        <th>
+            <form action="{{ url_for('drop', id=i.id) }}">
+                <input type="submit" value="Drop">
+            </form>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+<h2>Students</h2>
+<table>
+    <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+    </tr>
+    {% for i in students %}
+    <tr>
+        <th>{{i.studentID}}</th>
+        <th>{{i.studentName}}</th>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+<h2>Classes</h2>
+<table>
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+    </tr>
+    {% for i in courses %}
+    <tr>
+        <th>{{i.courseID}}</th>
+        <th>{{i.courseName}}</th>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+<form method="POST">
+    <label for="sID">Student ID:</label>
+    <input type="number" value=0 name="Student ID" id="sID">
+    <label for="cID">Course ID:</label>
+    <input type="number" value=0 name="Course ID" id="cID">
+    <input type="submit" value="Add to class">
+</form>
+
+
+<hr>
+<form action="{{ url_for('index') }}">
+    <button>Go Back</button>
+</form>
+{% endblock content%}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Student List</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Credits</th>
+        </tr>
+        {% for i in students %}
+        <tr>
+            <th>{{i.studentID}}</th>
+            <th>{{i.studentName}}</th>
+            <th>{{i.credits}}</th>
+            <th>
+                <form action="{{ url_for('update', id=i.id, type='student') }}">
+                    <input type="submit" value="Edit">
+                </form>
+            </th>
+            <th>
+                <form action="{{ url_for('delete', id=i.id, type='student') }}">
+                    <input type="submit" value="delete">
+                </form>
+            </th>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+    <form method="POST">
+        <label for="sID">Student ID:</label>
+        <input type="number" value=0 name="Student ID" id="sID">
+        <label for="name">Student Name:</label>
+        <input type="text" value="Name" name="Name" id="name">
+        <label for="credit">Student Credits:</label>
+        <input type="number" value=0 name="Credits" id="credit">
+        <input type="submit" value="Add Student">
+    </form>
+
+    <hr>
+    <form action="{{ url_for('index') }}">
+        <button>Go Back</button>
+    </form>
+{% endblock content %}

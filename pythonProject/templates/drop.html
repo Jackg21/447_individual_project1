@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Classes</th>
+    </tr>
+    {% for i in user.classes %}
+    <tr>
+        <th>{{i.courseID}}</th>
+        <th>{{i.courseName}}</th>
+    </tr>
+    {% endfor %}
+</table>
+<form method="POST">
+    <label for="cID">Enter Course ID:</label>
+    <input type="number" name="Course ID" id="cID">
+    <input type="submit" value="Save">
+</form>
+<hr>
+<form action="{{ url_for('enroll') }}">
+    <button>Go Back</button>
+</form>
+{% endblock content %}

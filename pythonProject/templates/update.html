@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if c == 's' %}
+<h1>Edit Student</h1>
+<form method="POST">
+    <label for="sID">Student ID:</label>
+    <input type="number" value={{user.studentID}} name="Student ID" id="sID">
+    <label for="sName">Student Name:</label>
+    <input type="text" value="{{user.studentName}}" name="Name" id="sName">
+    <label for="credit">Student Credits:</label>
+    <input type="number" value={{user.credits}} name="Credits" id="credit">
+    <input type="submit" value="Save">
+</form>
+
+<hr>
+<form action="{{ url_for('student') }}">
+    <button>Go Back</button>
+</form>
+{% endif %}
+
+{% if c == 't' %}
+<h1>Edit Teacher</h1>
+<form method="POST">
+    <label for="tID">Teacher ID:</label>
+    <input type="number" value={{user.teacherID}} name="Teacher ID" id="tID">
+    <label for="tName">Teacher Name:</label>
+    <input type="text" value="{{user.teacherName}}" name="Name" id="tName">
+    <label for="depo">Department:</label>
+    <input type="text" value={{user.department}} name="Department" id="depo">
+    <input type="submit" value="Save">
+</form>
+<hr>
+<form action="{{ url_for('teacher') }}">
+    <button>Go Back</button>
+</form>
+{% endif %}
+
+{% if c == 'c' %}
+<h1>Edit Course</h1>
+<form method="POST">
+    <label for="cID">Course ID:</label>
+    <input type="number" value={{user.courseID}} name="Course ID" id="cID">
+    <label for="cName">Course Name:</label>
+    <input type="text" value="{{user.courseName}}" name="Name" id="cName">
+    <label for="teID">Teacher ID:</label>
+    <input type="text" value={{user.teacherID}} name="Teacher ID" id="teID">
+    <input type="submit" value="Save">
+</form>
+<hr>
+<form action="{{ url_for('course') }}">
+    <button>Go Back</button>
+</form>
+{% endif %}
+
+{% endblock content %}
