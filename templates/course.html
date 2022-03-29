@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Course List</h1>
+    <hr>
+    <table>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Teacher ID</th>
+        </tr>
+        {% for i in courses %}
+        <tr>
+            <td>{{i.courseID}}</td>
+            <td>{{i.courseName}}</td>
+            <td>{{i.teacherID}}</td>
+            <td>
+                <form action="{{ url_for('update', id=i.id, type='course') }}">
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('delete', id=i.id, type='course') }}">
+                    <input type="submit" value="delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+    <form method="POST">
+        <label for="cID">Course ID:</label>
+        <input type="number" value=0 name="Course ID" id="cID">
+        <label for="name">Course Name:</label>
+        <input type="text" value="Name" name="Name" id="name">
+        <label for="tID">Teacher ID:</label>
+        <input type="number" value=0 name="Teacher ID" id="tID">
+        <input type="submit" value="Add Course">
+    </form>
+
+    <hr>
+    <form action="{{ url_for('index') }}">
+        <button>Go Back</button>
+    </form>
+{% endblock content %}

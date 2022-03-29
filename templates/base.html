@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    {% block content %}
+    <h1>Edit list of students:</h1>
+    <form action="{{ url_for('student') }}">
+        <button>Students List</button>
+    </form>
+
+    <h1>Edit list of teachers:</h1>
+    <form action="{{ url_for('teacher') }}">
+        <button>Teachers List</button>
+    </form>
+
+    <h1>Edit list of courses:</h1>
+    <form action="{{ url_for('course') }}">
+        <button>Courses List</button>
+    </form>
+
+    <h1>Edit students enrolled in classes:</h1>
+    <form action="{{ url_for('enroll') }}">
+        <button>Enrolled</button>
+    </form>
+    {% endblock content %}
+</body>
+</html>
